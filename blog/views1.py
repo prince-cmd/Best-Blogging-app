@@ -3,27 +3,13 @@ from blog.models import Post , BlogComment
 
 from django.contrib import messages
 from blog.templatetags import extras
-from django.core.paginator import Paginator , EmptyPage , PageNotAnInteger
 
 
 
 # Create your views here.
 
 def blogHome(request):
-    all_my_Posts = Post.objects.all()
-    all_Posts = Paginator(all_my_Posts,2)
-    
-    page = request.GET.get('page')
-    try:
-        allPosts = all_Posts.page(page) 
-    except PageNotAnInteger:
-        allPosts = all_Posts.page(1)
-    except EmptyPage:
-        allPosts = all_Posts.page(all_Posts.num_page)
-
-
-    #allPosts = Post.objects.all()
-    #context = {'allPosts' : allPosts}
+    allPosts = Post.objects.all()
     context = {'allPosts' : allPosts}
     return render(request, 'blog/blogHome.html', context)
 
