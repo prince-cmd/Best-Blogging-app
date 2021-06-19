@@ -9,7 +9,7 @@ from django.utils.timezone import now
 class Post(models.Model):
     sno = models.AutoField(primary_key=True)
     title = models.CharField(max_length=255)
-    thumbnail = models.ImageField(upload_to='media/images')
+    thumbnail = models.ImageField(upload_to='media/media/images')
     content = models.TextField()
     author = models.CharField(max_length=20)
     slug = models.CharField(max_length=130)
